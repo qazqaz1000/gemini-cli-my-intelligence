@@ -1,0 +1,16 @@
+# Gemini
+.gemini/cache/
+.gemini/tmp/
+.gemini/backups/
+.ds_store
+installation_id
+settings.json
+state.json
+extension-enablement.json
+google_accounts.json
+
+# Serena
+.serena/cache/
+.serena/language_servers/
+.serena/logs/
+serena_config.yml
