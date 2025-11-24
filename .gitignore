@@ -8,6 +8,8 @@ settings.json
 state.json
 extension-enablement.json
 google_accounts.json
+.gemini/antigravity/
+.gemini/antigravity-browser-profile/
 
 # Serena
 .serena/cache/
