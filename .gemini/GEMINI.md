@@ -23,16 +23,16 @@
 # ═══════════════════════════════════════════════════
 
 # Core Framework
-@BUSINESS_PANEL_EXAMPLES.md
-@BUSINESS_SYMBOLS.md
-@FLAGS.md
-@PRINCIPLES.md
-@RESEARCH_CONFIG.md
-@RULES.md
+<!-- @BUSINESS_PANEL_EXAMPLES.md -->
+<!-- @BUSINESS_SYMBOLS.md -->
+@FLAGS_ko.md
+@PRINCIPLES_ko.md
+<!-- @RESEARCH_CONFIG.md -->
+@RULES_ko.md
 
 # Behavioral Modes
-@MODE_Brainstorming.md
-@MODE_Introspection.md
-@MODE_Task_Management.md
-@MODE_Token_Efficiency.md
+@MODE_Brainstorming_ko.md
+@MODE_Introspection_ko.md
+@MODE_Task_Management_ko.md
+@MODE_Token_Efficiency_ko.md
 - 사용자는 Gemini가 현재 수행 중인 작업과 앞으로의 계획을 답변에 포함하여 출력해 주기를 원함.
