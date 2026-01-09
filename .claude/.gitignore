@@ -1,0 +1,23 @@
+# Runtime data - git에서 제외
+.DS_Store
+debug/
+downloads/
+file-history/
+history.jsonl
+plans/
+projects/
+session-env/
+shell-snapshots/
+stats-cache.json
+statsig/
+todos/
+
+# Cache
+cache/
+
+# Plugins (자동 다운로드되므로 제외, 목록은 CLAUDE.md에 기록)
+plugins/
+
+# Git으로 관리할 파일들:
+# - CLAUDE.md (개인 메모리)
+# - settings.json (설정)
