@@ -79,6 +79,29 @@ Executable code (Python/Bash/etc.) for tasks that require deterministic reliabil
 - **Benefits**: Token efficient, deterministic, may be executed without loading into context
 - **Note**: Scripts may still need to be read by Claude for patching or environment-specific adjustments
 
+**Script Language Guidelines:**
+
+| 유형 | 언어 | 이유 |
+|------|------|------|
+| API 호출 (HTTP) | **Python** | 복잡한 요청/응답 처리 |
+| 시스템 명령어 래퍼 | **Shell** | 직접 실행이 더 효율적 |
+| 데이터 변환 | **Python** | JSON/파싱 처리 용이 |
+
+**Python 스크립트 필수 규칙:**
+- **표준 라이브러리만 사용** (의존성 0)
+- `urllib.request` 사용 (`requests` 패키지 금지)
+- `json`, `base64`, `datetime` 등 표준 모듈만 허용
+- 외부 패키지 필요 시 사용자에게 명시적 안내 필요
+
+```python
+# 올바른 예시
+import urllib.request
+import json
+
+# 금지 예시
+import requests  # 외부 패키지
+```
+
 ##### References (`references/`)
 
 Documentation and reference material intended to be loaded as needed into context to inform Claude's process and thinking.
