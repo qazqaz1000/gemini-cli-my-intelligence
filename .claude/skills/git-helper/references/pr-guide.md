@@ -96,10 +96,40 @@ PR:   [PK-XXXXX] 전체 작업 요약        ← type(scope) 없음
 
 ## PR 생성
 
+### 프로젝트 템플릿 자동 인식
+
+PR 생성 시 프로젝트에 정의된 템플릿을 자동으로 사용합니다.
+
+**탐색 순서** (우선순위):
+1. `.github/PULL_REQUEST_TEMPLATE.md`
+2. `.github/pull_request_template.md`
+3. `docs/pull_request_template.md`
+4. `PULL_REQUEST_TEMPLATE.md`
+
+템플릿이 없으면 기본 포맷을 사용합니다.
+
 ### 기본 명령
 ```bash
-gh pr create --assignee @me --title "[PK-XXXXX] 전체 작업 요약" --body "$(cat <<'EOF'
-## Summary
+# 템플릿 자동 감지 및 적용
+template_paths=(
+  ".github/PULL_REQUEST_TEMPLATE.md"
+  ".github/pull_request_template.md"
+  "docs/pull_request_template.md"
+  "PULL_REQUEST_TEMPLATE.md"
+)
+
+template_body=""
+for path in "${template_paths[@]}"; do
+  if [[ -f "$path" ]]; then
+    template_body=$(cat "$path")
+    echo "✓ 템플릿 사용: $path"
+    break
+  fi
+done
+
+# 템플릿이 없으면 기본 포맷
+if [[ -z "$template_body" ]]; then
+  template_body="## Summary
 - 주요 변경사항 1
 - 주요 변경사항 2
 
@@ -108,9 +138,10 @@ gh pr create --assignee @me --title "[PK-XXXXX] 전체 작업 요약" --body "$(
 - [ ] UI 확인
 - [ ] 엣지 케이스 테스트
 
-🤖 Generated with Claude Code
-EOF
-)"
+🤖 Generated with Claude Code"
+fi
+
+gh pr create --assignee @me --title "[PK-XXXXX] 전체 작업 요약" --body "$template_body"
 ```
 
 ### 베이스 브랜치 지정
@@ -124,6 +155,9 @@ gh pr create --draft --title "..." --body "..."
 ```
 
 ## PR 템플릿
+
+### 기본 템플릿 (Default)
+프로젝트에 템플릿이 없을 때 사용하는 기본 포맷입니다.
 
 ```markdown
 ## Summary
@@ -140,6 +174,19 @@ gh pr create --draft --title "..." --body "..."
 
 🤖 Generated with Claude Code
 ```
+
+### 프로젝트별 커스터마이징
+
+각 프로젝트는 `.github/PULL_REQUEST_TEMPLATE.md`에 자체 템플릿을 정의할 수 있습니다.
+
+**예시: KidsNote Android**
+- 작업 내용 (지라 티켓, 기획서, 피그마)
+- 테스트 시나리오 (최소/최신 버전, 해상도)
+- 변경 사항 요약
+- 리뷰 노트
+- 스크린샷 (수정전/수정후)
+
+PR 생성 시 이러한 프로젝트별 템플릿이 자동으로 적용됩니다.
 
 ## PR 관리
 

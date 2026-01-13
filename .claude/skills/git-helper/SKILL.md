@@ -38,18 +38,37 @@ EOF
 # 1. Base branch 자동 결정
 ~/.claude/scripts/git/get_base_branch.sh
 
-# 2. 푸시 및 PR 생성
-git push -u origin $(git branch --show-current)
-gh pr create --base <base> --assignee @me --title "[PK-XXXXX] 요약" --body "$(cat <<'EOF'
-## Summary
+# 2. 프로젝트 템플릿 확인 (우선순위 순)
+template_paths=(
+  ".github/PULL_REQUEST_TEMPLATE.md"
+  ".github/pull_request_template.md"
+  "docs/pull_request_template.md"
+  "PULL_REQUEST_TEMPLATE.md"
+)
+
+template_body=""
+for path in "${template_paths[@]}"; do
+  if [[ -f "$path" ]]; then
+    template_body=$(cat "$path")
+    echo "✓ 템플릿 사용: $path"
+    break
+  fi
+done
+
+# 템플릿이 없으면 기본 포맷
+if [[ -z "$template_body" ]]; then
+  template_body="## Summary
 - 변경사항
 
 ## Test plan
 - [ ] 테스트 항목
 
-🤖 Generated with Claude Code
-EOF
-)"
+🤖 Generated with Claude Code"
+fi
+
+# 3. 푸시 및 PR 생성
+git push -u origin $(git branch --show-current)
+gh pr create --base <base> --assignee @me --title "[PK-XXXXX] 요약" --body "$template_body"
 ```
 
 ### 브랜치
