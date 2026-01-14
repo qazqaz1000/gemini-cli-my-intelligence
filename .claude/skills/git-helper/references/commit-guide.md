@@ -22,8 +22,6 @@ git log --oneline -5
 본문 (선택사항)
 - 변경 이유
 - 주요 변경 내용
-
-Co-Authored-By: Claude <noreply@anthropic.com>
 ```
 
 ### Type 상세
@@ -50,8 +48,6 @@ Co-Authored-By: Claude <noreply@anthropic.com>
 git add <files>
 git commit -m "$(cat <<'EOF'
 [PK-12345] feat(album) : 앨범 삭제 기능 추가
-
-Co-Authored-By: Claude <noreply@anthropic.com>
 EOF
 )"
 ```

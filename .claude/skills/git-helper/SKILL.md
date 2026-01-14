@@ -13,8 +13,6 @@ Git과 GitHub CLI(gh)를 사용한 버전 관리.
 
 ```
 [PK-XXXXX] type(scope) : 한국어 설명
-
-Co-Authored-By: Claude <noreply@anthropic.com>
 ```
 
 **Type**: feat, fix, refactor, docs, test, chore
@@ -27,8 +25,6 @@ git status && git diff
 git add <files>
 git commit -m "$(cat <<'EOF'
 [PK-12345] feat(login) : 소셜 로그인 추가
-
-Co-Authored-By: Claude <noreply@anthropic.com>
 EOF
 )"
 ```
@@ -62,8 +58,6 @@ if [[ -z "$template_body" ]]; then
 
 ## Test plan
 - [ ] 테스트 항목
-
-🤖 Generated with Claude Code"
 fi
 
 # 3. 푸시 및 PR 생성

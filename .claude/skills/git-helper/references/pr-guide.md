@@ -136,9 +136,7 @@ if [[ -z "$template_body" ]]; then
 ## Test plan
 - [ ] 기능 테스트 완료
 - [ ] UI 확인
-- [ ] 엣지 케이스 테스트
-
-🤖 Generated with Claude Code"
+- [ ] 엣지 케이스 테스트"
 fi
 
 gh pr create --assignee @me --title "[PK-XXXXX] 전체 작업 요약" --body "$template_body"
@@ -171,8 +169,6 @@ gh pr create --draft --title "..." --body "..."
 
 ## Related
 - Jira: [PK-XXXXX](https://kidsnote.atlassian.net/browse/PK-XXXXX)
-
-🤖 Generated with Claude Code
 ```
 
 ### 프로젝트별 커스터마이징
