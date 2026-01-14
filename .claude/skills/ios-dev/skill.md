@@ -15,6 +15,16 @@ description: |
 - **SwiftUI**: ViewModel 패턴 (권장) 또는 TCA
 - **Deprecated API 금지**
 
+## 코드 포맷팅
+
+Xcode 기본 정렬 (`Ctrl + I`) 준수:
+- **Indentation**: 4 spaces 기준
+- **Trailing whitespace 금지**: 줄 끝 불필요한 공백 제거
+- **빈 줄**: 현재 들여쓰기 레벨의 공백 포함 (완전히 비우지 않음)
+- **메서드/함수 시작 직후**: 빈 줄 없이 바로 코드 시작
+- **Objective-C 블록**: 파라미터 정렬 X, 4 spaces 기준 들여쓰기
+- **주석 블록**: 현재 들여쓰기 레벨에 맞게 정렬
+
 ## 개발 흐름
 
 1. **Domain**: Entity → UseCase 인터페이스
